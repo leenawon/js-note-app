@@ -1,0 +1,100 @@
+:root {
+  /* Color */
+  --yellow-color: #ffe082;
+  --dark-grey-color: #373737;
+  --light-grey-color: #cfcfcf;
+}
+
+/* Reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button,
+input {
+  outline: none;
+  outline-color: transparent;
+  background-color: transparent;
+}
+
+/* Font */
+@font-face {
+  font-family: "ELAND_Choice_M";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/ELAND_Choice_M.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "ELAND_Choice_M";
+}
+
+button,
+input,
+input::placeholder,
+textarea,
+textarea::placeholder {
+  font-family: "ELAND_Choice_M";
+}
+
+/* Note Wrapper */
+.note-wrapper {
+  max-width: 1080px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.note-wrapper h1 {
+  color: var(--dark-grey-color);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Note */
+.note h2 {
+  color: var(--yellow-color);
+}
+
+/* Note Input */
+.note-input {
+  margin: 0.7rem 0;
+  padding: 0.5rem 0;
+}
+
+/* Note Title & Note Content */
+.note-input .note-title,
+.note-input .note-content {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 3px solid var(--light-grey-color);
+  border-radius: 0.5rem;
+}
+
+.note-content {
+  resize: none;
+}
+
+.note-content:focus {
+  outline: none;
+}
+
+/* Add Note Button */
+.note-input button {
+  width: 120px;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 2px solid var(--yellow-color);
+  border-radius: 0.5rem;
+  color: var(--dark-grey-color);
+  background-color: var(--yellow-color);
+  cursor: pointer;
+}
+
+.note-input button:hover {
+  color: white;
+  background-color: #ffcc80;
+}
