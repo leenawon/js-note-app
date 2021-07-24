@@ -3,6 +3,8 @@
   --yellow-color: #ffe082;
   --dark-grey-color: #373737;
   --light-grey-color: #cfcfcf;
+  /* Border Radius */
+  --border-radius: 0.5rem;
 }
 
 /* Reset */
@@ -62,6 +64,9 @@ textarea::placeholder {
 .note-input {
   margin: 0.7rem 0;
   padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 /* Note Title & Note Content */
@@ -71,7 +76,7 @@ textarea::placeholder {
   padding: 0.5rem;
   margin-bottom: 0.5rem;
   border: 3px solid var(--light-grey-color);
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
 }
 
 .note-content {
@@ -82,19 +87,40 @@ textarea::placeholder {
   outline: none;
 }
 
-/* Add Note Button */
-.note-input button {
+/* Add Note Button & Delete Button */
+.note-wrapper button {
   width: 120px;
   font-size: 1rem;
   padding: 0.5rem;
-  border: 2px solid var(--yellow-color);
-  border-radius: 0.5rem;
+  border: 3px solid var(--yellow-color);
+  border-radius: var(--border-radius);
   color: var(--dark-grey-color);
-  background-color: var(--yellow-color);
   cursor: pointer;
 }
 
-.note-input button:hover {
+.note-wrapper button:hover {
   color: white;
-  background-color: #ffcc80;
+  background-color: var(--yellow-color);
+}
+
+/* Note List & Note Item */
+.note-list,
+.note-list .note-item {
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+}
+
+.note-list {
+  margin: 2rem 0;
+  background-color: var(--yellow-color);
+}
+
+.note-list .note-item {
+  background-color: white;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.note-item h3,
+.note-item p {
+  margin-bottom: 1rem;
 }
