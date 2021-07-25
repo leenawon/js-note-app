@@ -124,3 +124,16 @@ textarea::placeholder {
 .note-item p {
   margin-bottom: 1rem;
 }
+
+.delete-all-button {
+  float: right;
+  margin-bottom: 1.5rem;
+}
+
+/* Media Query */
+@media screen and (min-width: 700px) {
+  .note-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
