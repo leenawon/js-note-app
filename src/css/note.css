@@ -3,6 +3,7 @@
   --yellow-color: #ffe082;
   --dark-grey-color: #373737;
   --light-grey-color: #cfcfcf;
+  --red-color: #f44336;
   /* Border Radius */
   --border-radius: 0.5rem;
 }
@@ -128,6 +129,10 @@ textarea::placeholder {
 .delete-all-button {
   float: right;
   margin-bottom: 1.5rem;
+}
+
+.check {
+  border-color: var(--red-color);
 }
 
 /* Media Query */
