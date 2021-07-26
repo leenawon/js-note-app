@@ -132,7 +132,7 @@ textarea::placeholder {
 }
 
 .check {
-  border-color: var(--red-color);
+  border-color: var(--red-color) !important;
 }
 
 /* Media Query */
