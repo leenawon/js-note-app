@@ -13,6 +13,7 @@ function Note(id, title, content) {
   this.content = content;
 }
 
+// Check Note Input Value
 function checkNoteInput(title, content) {
   const titleValue = title.value;
   const contentValue = content.value;
@@ -32,14 +33,33 @@ function checkNoteInput(title, content) {
   }, 1000);
 }
 
+// Create Note Item
+function createNoteItem(noteItem) {
+  const noteItemDiv = document.createElement('div');
+  noteItemDiv.classList.add('note-item');
+  noteItemDiv.setAttribute('item-id', noteItem.id);
+  noteItemDiv.innerHTML = `
+    <h3>${noteItem.title}</h3>
+    <p>${noteItem.content}</p>
+    <button type="button">
+      <span><i class="fas fa-trash-alt"></i></span>
+      삭제
+    </button>`;
+  noteList.appendChild(noteItemDiv);
+}
+
+// Handle Add Note
 function handleAddNote() {
   if(checkNoteInput(title, content)) {
     let noteArray = [];
     let noteItem = new Note(ID, title.value, content.value);
     ID++;
     noteArray.push(noteItem);
-    console.log(noteArray);
+    createNoteItem(noteItem);
+    title.value = "";
+    content.value = "";
   }
 }
 
+// Add Button Click Event Listener
 addNoteButton.addEventListener('click', handleAddNote);
