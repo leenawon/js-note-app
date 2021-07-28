@@ -47,11 +47,25 @@ function createNoteItem(noteItem) {
   noteItemDiv.innerHTML = `
     <h3>${noteItem.title}</h3>
     <p>${noteItem.content}</p>
-    <button type="button">
+    <button type="button" class="delete-button">
       <span><i class="fas fa-trash-alt"></i></span>
       삭제
     </button>`;
   noteList.appendChild(noteItemDiv);
+}
+
+// Delete Note Item
+function deleteNote(event) {
+  if(event.target.classList.contains('delete-button')) {
+    event.target.parentElement.remove();
+    // note Item의 item-id 값
+    let ItemId = event.target.parentElement.attributes[1].value;
+    let notes = noteLocalStorage();
+    let updateNote = notes.filter((note) => {
+      return note.id !== parseInt(ItemId);
+    });
+    localStorage.setItem('Notes', JSON.stringify(updateNote));
+  }
 }
 
 // Show Note Item (Local Storage)
@@ -86,3 +100,5 @@ function handleAddNote() {
 addNoteButton.addEventListener('click', handleAddNote);
 // Show Note Item Event Listener
 document.addEventListener('DOMContentLoaded', showNote);
+// Delete Note Button Event Listener
+noteList.addEventListener('click', deleteNote);
