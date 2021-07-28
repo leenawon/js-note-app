@@ -13,6 +13,12 @@ function Note(id, title, content) {
   this.content = content;
 }
 
+// get Notes - Local Storage
+function noteLocalStorage() {
+  const getNotes = localStorage.getItem('Notes');
+  return getNotes ? JSON.parse(getNotes) : [];
+}
+
 // Check Note Input Value
 function checkNoteInput(title, content) {
   const titleValue = title.value;
@@ -48,14 +54,29 @@ function createNoteItem(noteItem) {
   noteList.appendChild(noteItemDiv);
 }
 
+// Show Note Item (Local Storage)
+function showNote() {
+  let notes = noteLocalStorage();
+  if(notes.length > 0) {
+    ID = notes[notes.length -1].id;
+    ID++;
+  } else {
+    ID = 1;
+  }
+  notes.forEach((item) => {
+    createNoteItem(item);
+  });
+}
+
 // Handle Add Note
 function handleAddNote() {
   if(checkNoteInput(title, content)) {
-    let noteArray = [];
+    let noteArray = noteLocalStorage();
     let noteItem = new Note(ID, title.value, content.value);
     ID++;
     noteArray.push(noteItem);
     createNoteItem(noteItem);
+    localStorage.setItem('Notes', JSON.stringify(noteArray));
     title.value = "";
     content.value = "";
   }
@@ -63,3 +84,5 @@ function handleAddNote() {
 
 // Add Button Click Event Listener
 addNoteButton.addEventListener('click', handleAddNote);
+// Show Note Item Event Listener
+document.addEventListener('DOMContentLoaded', showNote);
