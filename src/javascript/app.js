@@ -2,6 +2,7 @@ const noteList = document.querySelector('.note-list');
 const addNoteButton = document.querySelector('.note-input button');
 const title = document.querySelector('.note-title');
 const content = document.querySelector('.note-content');
+const deleteAllButton = document.querySelector('.delete-all-button');
 
 const CHECK_CLASS = "check";
 
@@ -68,6 +69,18 @@ function deleteNote(event) {
   }
 }
 
+// Delete All Note Item
+function deleteAllNote() {
+  localStorage.removeItem('Notes');
+  let allNoteItem = document.querySelectorAll('.note-item');
+  if(allNoteItem.length > 0) {
+    allNoteItem.forEach((item) => {
+      noteList.removeChild(item);
+    })
+  }
+  ID = 1;
+}
+
 // Show Note Item (Local Storage)
 function showNote() {
   let notes = noteLocalStorage();
@@ -102,3 +115,5 @@ addNoteButton.addEventListener('click', handleAddNote);
 document.addEventListener('DOMContentLoaded', showNote);
 // Delete Note Button Event Listener
 noteList.addEventListener('click', deleteNote);
+// Delete All Button Event Listener
+deleteAllButton.addEventListener('click', deleteAllNote);
